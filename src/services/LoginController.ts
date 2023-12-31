@@ -4,7 +4,6 @@ export interface LoginParamsType {
   username: string;
   password: string;
   verifyCode: string;
-  captchaId: string;
 }
 
 /**
@@ -30,11 +29,21 @@ export const login = async (loginParams: LoginParamsType) => {
 };
 
 /**
- * 退出接口
+ * 退出登录接口
  * @returns
  */
 export const logout = async () => {
   return request('/api/admin/base/comm/logout', {
     method: 'POST',
+  });
+};
+
+/**
+ * 获取当前登录用户
+ * @returns
+ */
+export const getCurrentUser = async () => {
+  return request('/api/admin/base/open/currentUser', {
+    method: 'GET',
   });
 };
