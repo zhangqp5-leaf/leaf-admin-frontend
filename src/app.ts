@@ -35,7 +35,7 @@ export const layout = () => {
     menu: {
       locale: false,
     },
-    colorPrimary: '#1890ff',
+    colorPrimary: '#722ED1',
     layout: 'mix',
     contentWidth: 'Fluid',
     fixedHeader: true,

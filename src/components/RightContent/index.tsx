@@ -14,8 +14,7 @@ const { logout } = service.LoginController;
 
 const RightContent: React.FC = () => {
   const [messageApi, contextHolder] = message.useMessage();
-  const { initialState, setInitialState } = useModel('@@initialState');
-  console.log(setInitialState);
+  const { initialState } = useModel('@@initialState');
   const navigate = useNavigate();
 
   // 退出登录
@@ -32,10 +31,7 @@ const RightContent: React.FC = () => {
     {
       key: '1',
       label: (
-        <section
-          className="flex gap-2"
-          onClick={() => navigate('/user/center')}
-        >
+        <section className="flex gap-2" onClick={() => navigate('/my/info')}>
           <UserOutlined />
           用户中心
         </section>
@@ -65,8 +61,13 @@ const RightContent: React.FC = () => {
         arrow
         trigger={['click']}
       >
-        <section className="cursor-pointer">
-          <span>{initialState?.currentUser?.username}</span>
+        <section className="cursor-pointer flex items-center">
+          <span>{initialState?.currentUser?.nickname}</span>
+          <img
+            src={initialState?.currentUser?.headImg}
+            alt=""
+            className="w-8 h-8 rounded-full ml-4"
+          />
         </section>
       </Dropdown>
     </div>

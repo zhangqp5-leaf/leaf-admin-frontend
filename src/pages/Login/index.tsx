@@ -86,8 +86,9 @@ const Login: React.FC = () => {
   return (
     <main
       className={classNames(
-        'flex justify-center m-[-32px_-40px] bg-no-repeat bg-center bg-fixed bg-cover',
+        'flex justify-center bg-no-repeat bg-center bg-fixed bg-cover',
         'align-center relative text-[#2c3142] h-screen bg-white',
+        'login-container',
       )}
     >
       {contextHolder}
