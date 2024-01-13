@@ -2,7 +2,9 @@ import { defineConfig } from '@umijs/max';
 import { routes } from './src/route';
 
 export default defineConfig({
-  antd: {},
+  antd: {
+    appConfig: {},
+  },
   access: {},
   model: {},
   initialState: {},

@@ -73,7 +73,6 @@ export const request: RequestConfig = {
   timeout: 10000,
   headers: {
     'X-Requested-With': 'XMLHttpRequest',
-    authorization: `Bearer ${sessionStorage.getItem('token')}`,
   },
 
   // 错误处理： umi@3 的错误处理方案。
@@ -126,11 +125,12 @@ export const request: RequestConfig = {
 
         if (error.response.status === 401) {
           message.error(`登录超时，请重新登录`);
+          sessionStorage.removeItem('token');
           history.push('/login');
           return;
         }
 
-        message.error(`${error.response.data.message}`);
+        message.error(`${error.response.data.msg}`);
       } else if (error.request) {
         // 请求已经成功发起，但没有收到响应
         // \`error.request\` 在浏览器中是 XMLHttpRequest 的实例，
@@ -144,13 +144,14 @@ export const request: RequestConfig = {
   },
 
   // 请求拦截器
-  // requestInterceptors: [
-  //   (config) => {
-  //   // 拦截请求配置，进行个性化处理。
-  //     const url = config.url.concat('?token = 123');
-  //     return { ...config, url};
-  //   }
-  // ],
+  requestInterceptors: [
+    (url, options) => {
+      options.headers.authorization = `Bearer ${sessionStorage.getItem(
+        'token',
+      )}`;
+      return { url, options };
+    },
+  ],
 
   // 响应拦截器
   responseInterceptors: [

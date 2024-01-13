@@ -37,7 +37,7 @@ const PageHeader: React.FC = () => {
         {tagHistory.map((tagItem) => (
           <section
             className={classNames(
-              'flex items-center p-2 rounded-[6px] cursor-pointer',
+              'flex items-center p-[6px] rounded-[6px] cursor-pointer',
               location.pathname === tagItem.path
                 ? 'bg-[#722ED1] text-white'
                 : 'bg-white hover:bg-[#eee]',
