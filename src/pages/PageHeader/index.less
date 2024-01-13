@@ -20,3 +20,19 @@
     transition: 0.4s all ease-out;
   }
 }
+
+// 定义全局的滚动条样式
+::-webkit-scrollbar {
+  //隐藏滚轮display: none;
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background: #eee;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  background: grey;
+  border-radius: 1rem;
+}

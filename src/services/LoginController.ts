@@ -5,6 +5,12 @@ export interface LoginParamsType {
   password: string;
   verifyCode: string;
 }
+export interface UpdatePersonParamsProps {
+  headImg: string;
+  nickname: string;
+  oldPassword: string;
+  password: string;
+}
 
 /**
  * 获取验证码
@@ -45,5 +51,11 @@ export const logout = async () => {
 export const getCurrentUser = async () => {
   return request('/api/admin/base/open/currentUser', {
     method: 'GET',
+  });
+};
+export const updatePersonApi = async (params: UpdatePersonParamsProps) => {
+  return request('/api/admin/base/comm/personUpdate', {
+    method: 'POST',
+    data: params,
   });
 };
