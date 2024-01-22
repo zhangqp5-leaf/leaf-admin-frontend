@@ -82,7 +82,7 @@ const MyInfo: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className="p-[32px] bg-[#fff]">
       <h3 className="mb-8">基本信息</h3>
       <Form
         form={form}

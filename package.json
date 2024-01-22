@@ -11,12 +11,14 @@
     "start": "npm run dev"
   },
   "dependencies": {
+    "@ant-design/charts": "1.4.2",
     "@ant-design/icons": "^5.0.1",
     "@ant-design/pro-components": "^2.4.4",
     "@umijs/max": "^4.0.90",
     "@unocss/cli": "^0.58.2",
     "antd": "^5.4.0",
     "classnames": "^2.5.1",
+    "dayjs": "^1.11.10",
     "unocss": "^0.58.2"
   },
   "devDependencies": {

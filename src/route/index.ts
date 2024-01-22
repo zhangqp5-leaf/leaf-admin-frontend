@@ -18,6 +18,16 @@ export const routes = [
         component: '../pages/Home',
       },
       {
+        name: '工作台',
+        routes: [
+          {
+            name: 'crud 示例',
+            path: '/crud',
+            component: '../pages/CRUD',
+          },
+        ],
+      },
+      {
         path: '/my/info',
         component: './My/Info',
         metaTagName: '用户中心',
