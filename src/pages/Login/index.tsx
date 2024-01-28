@@ -1,6 +1,6 @@
 import service from '@/services';
 import { useModel, useNavigate } from '@umijs/max';
-import { Button, Form, Input, message } from 'antd';
+import { App, Button, Form, Input } from 'antd';
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
 
@@ -18,7 +18,7 @@ type FieldType = {
 
 const Login: React.FC = () => {
   const [form] = Form.useForm();
-  const [messageApi, contextHolder] = message.useMessage();
+  const { message } = App.useApp();
   const { initialState, setInitialState } = useModel('@@initialState');
   const navigate = useNavigate();
 
@@ -34,15 +34,15 @@ const Login: React.FC = () => {
 
   const isPassVerify = (params: LoginParamsType): boolean => {
     if (!params.username) {
-      messageApi.info('请填写用户名！');
+      message.info('请填写用户名！');
       return false;
     }
     if (!params.password) {
-      messageApi.info('请填写密码！');
+      message.info('请填写密码！');
       return false;
     }
     if (!params.verifyCode) {
-      messageApi.info('请填写验证码！');
+      message.info('请填写验证码！');
       return false;
     }
     return true;
@@ -66,11 +66,11 @@ const Login: React.FC = () => {
       const _currentUser = res.data.data;
       sessionStorage.setItem('token', res.data.token);
       if (_currentUser) {
-        messageApi.success('登陆成功');
+        message.success('登陆成功');
         await setInitialState({ ...initialState, currentUser: _currentUser });
         navigate('/home');
       } else {
-        messageApi.error('登陆失败');
+        message.error('登陆失败');
         getPageVerifyCode();
       }
     } catch (error) {
@@ -91,7 +91,6 @@ const Login: React.FC = () => {
         'login-container',
       )}
     >
-      {contextHolder}
       <div
         className={classNames(
           'flex flex-col justify-center items-center w-[50%] absolute',

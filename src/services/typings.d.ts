@@ -63,6 +63,15 @@ declare namespace API {
     /** email */
     email?: string;
   }
+  interface UserRuleParamsProps {
+    id?: string;
+    name?: string;
+    desc?: string;
+    frequency?: string;
+    target?: string;
+    template?: string;
+    time?: string;
+  }
 
   type definitions_0 = null;
 }

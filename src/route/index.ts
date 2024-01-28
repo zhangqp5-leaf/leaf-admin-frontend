@@ -19,10 +19,11 @@ export const routes = [
       },
       {
         name: '工作台',
+        path: '/demo',
         routes: [
           {
             name: 'crud 示例',
-            path: '/crud',
+            path: '/demo/crud',
             component: '../pages/CRUD',
           },
         ],
@@ -36,11 +37,6 @@ export const routes = [
         name: '权限演示',
         path: '/access',
         component: './Access',
-      },
-      {
-        name: ' CRUD 示例',
-        path: '/table',
-        component: './Table',
       },
     ],
   },

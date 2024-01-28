@@ -161,6 +161,13 @@ export const request: RequestConfig = {
       //  if(!data.success){
       //    message.error('请求失败！');
       //  }
+      console.log('response', response.headers);
+      if (
+        response.headers.authorization &&
+        sessionStorage.getItem('token') !== response.headers.authorization
+      ) {
+        sessionStorage.setItem('token', response.headers.authorization);
+      }
       return response;
     },
   ],
