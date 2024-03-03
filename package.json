@@ -19,6 +19,7 @@
     "antd": "^5.4.0",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.10",
+    "socket.io-client": "^4.7.4",
     "unocss": "^0.58.2"
   },
   "devDependencies": {

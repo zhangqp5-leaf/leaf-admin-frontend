@@ -26,5 +26,10 @@ export default defineConfig({
       changeOrigin: true,
       // rewrite: (path) => path.replace(/^\/api/, ''),
     },
+    '/socket.io': {
+      target: 'ws://192.168.2.181:2119/',
+      changeOrigin: true,
+      // rewrite: (path: string) => path.replace(/^\/socket/, ''),
+    },
   },
 });

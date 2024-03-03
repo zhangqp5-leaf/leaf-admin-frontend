@@ -1,27 +1,28 @@
+import ChatModal from '@/components/ChatModal';
 import service from '@/services';
 import {
   LogoutOutlined,
-  StarFilled,
-  ThunderboltFilled,
   UserOutlined,
+  WechatOutlined,
 } from '@ant-design/icons';
 import { useModel, useNavigate } from '@umijs/max';
 import type { MenuProps } from 'antd';
-import { Button, Dropdown, Switch, message } from 'antd';
+import { App, Dropdown } from 'antd';
 import React from 'react';
 
 const { logout } = service.LoginController;
 
 const RightContent: React.FC = () => {
-  const [messageApi, contextHolder] = message.useMessage();
+  const { message } = App.useApp();
   const { initialState } = useModel('@@initialState');
+  const { setOpenChat } = useModel('useChatModal');
   const navigate = useNavigate();
 
   // 退出登录
   const handleLogout = async () => {
     const res = await logout();
     if (res.code === 200) {
-      messageApi.success('退出登录成功');
+      message.success('退出登录成功');
       sessionStorage.removeItem('token');
       navigate('/login');
     }
@@ -50,11 +51,7 @@ const RightContent: React.FC = () => {
 
   return (
     <div className="flex items-center gap-8 mr-4">
-      {contextHolder}
-      <Button>AI&nbsp;极速编码</Button>
-      <ThunderboltFilled />
-      <StarFilled />
-      <Switch checkedChildren="1" unCheckedChildren="0" />
+      <WechatOutlined onClick={() => setOpenChat(true)} />
       <Dropdown
         menu={{ items: menuItems }}
         placement="bottom"
@@ -70,6 +67,7 @@ const RightContent: React.FC = () => {
           />
         </section>
       </Dropdown>
+      <ChatModal />
     </div>
   );
 };

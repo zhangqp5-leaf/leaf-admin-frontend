@@ -86,3 +86,10 @@ export async function deleteUser(
     ...(options || {}),
   });
 }
+
+// 获取用户列表
+export const getUserListApi = async () => {
+  return request('/api/admin/base/open/allUser', {
+    method: 'GET',
+  });
+};

@@ -4,6 +4,7 @@ export interface LoginParamsType {
   username: string;
   password: string;
   verifyCode: string;
+  captchaId: string;
 }
 export interface UpdatePersonParamsProps {
   headImg: string;

@@ -38,6 +38,11 @@ export const routes = [
         path: '/access',
         component: './Access',
       },
+      // {
+      //   name: 'demo',
+      //   path: '/playground',
+      //   component: './Demo',
+      // },
     ],
   },
 ];

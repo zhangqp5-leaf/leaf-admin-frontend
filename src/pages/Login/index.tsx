@@ -1,3 +1,4 @@
+import bgImage from '@/assets/image/bg.jpg';
 import service from '@/services';
 import { useModel, useNavigate } from '@umijs/max';
 import { App, Button, Form, Input } from 'antd';
@@ -22,13 +23,19 @@ const Login: React.FC = () => {
   const { initialState, setInitialState } = useModel('@@initialState');
   const navigate = useNavigate();
 
-  const [captchaImg, setCaptchaImg] = useState<string>('');
+  const [captchaImg, setCaptchaImg] = useState<{
+    captchaId: string;
+    verifyCode: string;
+  }>({ captchaId: '', verifyCode: '' });
 
   // 获取验证码
   const getPageVerifyCode = async () => {
     const res = await getCaptcha();
     if (res.code === 200) {
-      setCaptchaImg(res.data);
+      setCaptchaImg({
+        captchaId: res.data.captchaId,
+        verifyCode: res.data.verifyCode,
+      });
     }
   };
 
@@ -56,6 +63,7 @@ const Login: React.FC = () => {
       // password: crypto.createHash('sha256').update(values.password, 'utf8').digest('hex'),
       password: values.password,
       verifyCode: values.verifyCode,
+      captchaId: captchaImg!.captchaId,
     };
     // 校验参数
     if (!isPassVerify(_params)) {
@@ -90,12 +98,14 @@ const Login: React.FC = () => {
         'align-center relative text-[#2c3142] h-screen bg-white',
         'login-container',
       )}
+      style={{ backgroundImage: `url(${bgImage})` }}
     >
       <div
         className={classNames(
-          'flex flex-col justify-center items-center w-[50%] absolute',
-          'top-0 right-0 z-10 h-full',
+          'flex flex-col items-center w-fit h-fit absolute',
+          'top-[50%] right-[240px] z-10 bg-[#fff] p-[40px] rounded-[12px]',
         )}
+        style={{ transform: 'translateY(-50%)' }}
       >
         <section
           className={classNames(
@@ -115,7 +125,7 @@ const Login: React.FC = () => {
           form={form}
           name="login"
           layout="vertical"
-          style={{ width: '32%' }}
+          style={{ width: '82%' }}
           onFinish={handleSubmit}
           autoComplete="off"
           className="p-l-[12px]"
@@ -133,7 +143,7 @@ const Login: React.FC = () => {
                 <img
                   className="h-[35px]"
                   src={`data:image/svg+xml;utf8,${encodeURIComponent(
-                    captchaImg,
+                    captchaImg!.verifyCode,
                   )}`}
                   onClick={() => getPageVerifyCode()}
                 />
