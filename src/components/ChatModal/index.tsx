@@ -18,10 +18,8 @@ const ChatModal: React.FC = () => {
   const { initialState } = useModel('@@initialState');
 
   const socket = io(
-    `http://localhost:1921?username=${initialState?.currentUser?.nickname}`,
-    {
-      withCredentials: true,
-    },
+    `http://122.51.12.76:1921?username=${initialState?.currentUser?.nickname}`,
+    // `http://192.168.2.181:1921?username=${initialState?.currentUser?.nickname}`
   );
 
   const [messageText, setMessageText] = useState('');

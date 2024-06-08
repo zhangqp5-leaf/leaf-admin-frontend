@@ -22,14 +22,15 @@ export default defineConfig({
   // 配置代理
   proxy: {
     '/api': {
-      target: 'http://192.168.2.181:2119/',
+      // target: 'http://192.168.2.181:2119/',
+      target: 'http://192.168.2.181:7001/',
       changeOrigin: true,
       // rewrite: (path) => path.replace(/^\/api/, ''),
     },
-    '/socket.io': {
-      target: 'ws://192.168.2.181:2119/',
-      changeOrigin: true,
-      // rewrite: (path: string) => path.replace(/^\/socket/, ''),
-    },
+    // '/socket.io': {
+    //   target: 'ws://192.168.2.181:2119/',
+    //   changeOrigin: true,
+    //   // rewrite: (path: string) => path.replace(/^\/socket/, ''),
+    // },
   },
 });
