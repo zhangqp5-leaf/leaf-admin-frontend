@@ -15,7 +15,7 @@ const { logout } = service.LoginController;
 const RightContent: React.FC = () => {
   const { message } = App.useApp();
   const { initialState } = useModel('@@initialState');
-  const { setOpenChat } = useModel('useChatModal');
+  const { openChat, setOpenChat } = useModel('useChatModal');
   const navigate = useNavigate();
 
   // 退出登录
@@ -67,7 +67,7 @@ const RightContent: React.FC = () => {
           />
         </section>
       </Dropdown>
-      <ChatModal />
+      {openChat && <ChatModal />}
     </div>
   );
 };
