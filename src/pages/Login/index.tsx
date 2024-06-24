@@ -1,4 +1,4 @@
-import bgImage from '@/assets/image/bg.jpg';
+// import bgImage from '@/assets/image/bg.jpg';
 import service from '@/services';
 import { useModel, useNavigate } from '@umijs/max';
 import { App, Button, Form, Input } from 'antd';
@@ -10,6 +10,8 @@ import type { LoginParamsType } from '@/services/LoginController';
 import './index.less';
 
 const { login, getCaptcha } = service.LoginController;
+
+const bgImage = 'http://122.51.12.76:2119/static/images/food-imgs/bg.jpg';
 
 type FieldType = {
   username: string;
