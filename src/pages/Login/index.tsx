@@ -133,10 +133,10 @@ const Login: React.FC = () => {
           className="p-l-[12px]"
         >
           <Form.Item<FieldType> label="用户名" name="username">
-            <Input placeholder="请输入用户名" />
+            <Input placeholder="请输入用户名(默认：admin)" />
           </Form.Item>
           <Form.Item<FieldType> label="密码" name="password">
-            <Input.Password placeholder="请输入密码" />
+            <Input.Password placeholder="请输入密码(默认：1234)" />
           </Form.Item>
           <Form.Item<FieldType> label="验证码" name="verifyCode">
             <Input

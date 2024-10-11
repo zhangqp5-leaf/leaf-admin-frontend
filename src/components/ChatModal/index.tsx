@@ -117,7 +117,7 @@ const ChatModal: React.FC = () => {
         </div>
       </section>
       <section className={classNames('bg-[#fff] rounded-[8px]')}>
-        <div className="flex p-[12px]">与{activeChatWindow.nickname}聊天中</div>
+        <div className="flex p-[12px]">与{activeChatWindow.nickname}聊天中(只有一个小的服务器，同时部署了前端+后端应用+mysql+es，所以性能较差)</div>
         <div className="flex flex-col-reverse gap-[12px] h-[420px] overflow-auto bg-[#f0f2f5] p-[12px]">
           {messageList.map((item) => {
             if (item._source.username === initialState?.currentUser?.nickname) {
